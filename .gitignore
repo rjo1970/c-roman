@@ -1,3 +1,5 @@
 *.o
 *.dSYM
 roman_math
+test/*test
+test/*.c

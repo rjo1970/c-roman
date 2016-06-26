@@ -1,0 +1,9 @@
+#include <string.h>
+#include <stdio.h>
+#include "../lib_roman.c"
+
+#test roman_numbers_can_be_capitalized
+  char *lowercased = "mcmlxxxiv";
+  char *result = uppercased_roman(lowercased);
+  fail_unless(strcmp(result, "MCMLXXXIV") == 0);
+  free(result);
