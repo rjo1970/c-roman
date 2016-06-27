@@ -7,3 +7,40 @@
   char *result = uppercased_roman(lowercased);
   fail_unless(strcmp(result, "MCMLXXXIV") == 0);
   free(result);
+
+#test can_check_for_replacement_opportunity_in_string
+  char *haystack = "MIV";
+  char *needle = "IV";
+  fail_unless(can_replace(haystack, needle));
+
+#test can_check_for_replacement_opportunity_that_is_not_there
+  char *haystack = "Clinton";
+  char *needle = "Trump";
+  fail_if(can_replace(haystack, needle));
+
+#test can_replace_substring_starting_at_end
+  char *haystack = "MIV";
+  char *needle = simplifiers[0];
+  char *needle_replacement = expanders[0];
+  char *result;
+  result = replace_substring(haystack, needle, needle_replacement);
+  fail_unless(strcmp(result, "MIIII") == 0);
+  free(result);
+
+#test can_replace_substring_starting_at_beginning
+  char *haystack = "CDI";
+  char *needle = "CD";
+  char *needle_replacement = "CCCC";
+  char *result;
+  result = replace_substring(haystack, needle, needle_replacement);
+  fail_unless(strcmp(result, "CCCCI"));
+  free(result);
+
+#test can_replace_substring_starting_in_middle
+  char *haystack = "MCDI";
+  char *needle = "CD";
+  char *needle_replacement = "CCCC";
+  char *result;
+  result = replace_substring(haystack, needle, needle_replacement);
+  fail_unless(strcmp(result, "MCCCCI"));
+  free(result);
