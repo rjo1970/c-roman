@@ -100,3 +100,9 @@
   char* result = roman_add(a, b);
   fail_unless(strcmp(result, "MCMLXXXIV") == 0);
   free(result);
+
+#test can_subtract_romans
+  char *a = "MCMLXX";
+  char *b = "XIV";
+  char *result = roman_subtract(a, b);
+  fail_unless(strcmp(result, "MCMLVI") == 0);

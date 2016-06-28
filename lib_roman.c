@@ -79,6 +79,7 @@ char *compress_roman(char* expanded) {
 }
 
 char *integer_to_roman(int number) {
+  assert(number < 4000 && number > 0);
   char *buffer = calloc(1, 30);
   assert(buffer != NULL);
   char *next = buffer;
@@ -100,4 +101,8 @@ char *integer_to_roman(int number) {
 
 char *roman_add(char *a, char *b) {
   return integer_to_roman(roman_to_integer(a) + roman_to_integer(b));
+}
+
+char *roman_subtract(char *a, char *b) {
+  return integer_to_roman(roman_to_integer(a) - roman_to_integer(b));
 }
