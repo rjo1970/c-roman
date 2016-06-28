@@ -59,3 +59,18 @@
   char *result = simplify_roman("XC");
   fail_unless(strcmp(result, "LXXXX") == 0);
   free(result);
+
+#test can_expand_roman_cd
+  char *result = simplify_roman("CD");
+  fail_unless(strcmp(result, "CCCC") == 0);
+  free(result);
+
+#test can_expand_roman_cm
+  char *result = simplify_roman("CM");
+  fail_unless(strcmp(result, "DCCCC") == 0);
+  free(result);
+
+#test can_expand_mcmxciv
+  char *result = simplify_roman("MCMXCIV");
+  fail_unless(strcmp(result, "MDCCCCLXXXXIIII"));
+  free(result);
