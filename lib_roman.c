@@ -77,3 +77,23 @@ char *compress_roman(char* expanded) {
   }
   return result;
 }
+
+char *integer_to_roman(int number) {
+  char *buffer = calloc(1, 30);
+  char *next = buffer;
+  assert(buffer != NULL);
+
+  int remaining = number;
+  int i = 0;
+  while(remaining > 0  && i < ROMAN_SIZE) {
+    while (remaining >= roman_values[i]) {
+      remaining -= roman_values[i];
+      *(next) = romans[i];
+      ++next;
+    }
+    ++i;
+  }
+  char *result = compress_roman(buffer);
+  free(buffer);
+  return result;
+}

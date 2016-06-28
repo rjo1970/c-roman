@@ -88,3 +88,8 @@
   char *result = compress_roman("MDCCCCLXXXIIII");
   fail_unless(strcmp(result, "MCMLXXXIV") == 0);
   free(result);
+
+#test can_convert_integer_to_roman
+  char *result = integer_to_roman(1984);
+  fail_unless(strcmp(result, "MCMLXXXIV") == 0);
+  free(result);
