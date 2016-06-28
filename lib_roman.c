@@ -65,3 +65,15 @@ int roman_to_integer(char *roman) {
   free(simplified);
   return value;
 }
+
+char *compress_roman(char* expanded) {
+  int i;
+  char *result;
+  char *intermediate = strdup(expanded);
+  for(i = TRANSLATION_SIZE - 1; i >= 0; --i) {
+    result = replace_substring(intermediate, simple_translation[i], proper_translation[i]);
+    free(intermediate);
+    intermediate = result;
+  }
+  return result;
+}
