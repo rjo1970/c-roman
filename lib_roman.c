@@ -15,18 +15,20 @@ char *uppercased_roman(char *lowercased) {
     return upper;
 }
 
-int can_replace(char *haystack, char *needle) {
-  return strstr(haystack, needle) != NULL;
-}
-
 char *replace_substring(char *haystack, char *needle, char *needle_replacement) {
   char *result;
   char *p = strstr(haystack, needle);
+  if (p == NULL) {
+    result = strdup(haystack);
+    return result;
+  }
   char *buffer = calloc(1, strlen(haystack) + strlen(needle_replacement) + 1);
+  assert(buffer != NULL);
   strcpy(buffer, haystack);
   int ndx = p - haystack;
   strcpy(buffer + (ndx * sizeof(char)), needle_replacement);
   result = strdup(buffer);
+  assert(result != NULL);
   free(buffer);
   return result;
 }

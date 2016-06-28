@@ -8,20 +8,10 @@
   fail_unless(strcmp(result, "MCMLXXXIV") == 0);
   free(result);
 
-#test can_check_for_replacement_opportunity_in_string
-  char *haystack = "MIV";
-  char *needle = "IV";
-  fail_unless(can_replace(haystack, needle));
-
-#test can_check_for_replacement_opportunity_that_is_not_there
-  char *haystack = "Clinton";
-  char *needle = "Trump";
-  fail_if(can_replace(haystack, needle));
-
 #test can_replace_substring_starting_at_end
   char *haystack = "MIV";
-  char *needle = simplifiers[0];
-  char *needle_replacement = expanders[0];
+  char *needle = proper_translation[0];
+  char *needle_replacement = simple_translation[0];
   char *result;
   result = replace_substring(haystack, needle, needle_replacement);
   fail_unless(strcmp(result, "MIIII") == 0);
@@ -43,4 +33,27 @@
   char *result;
   result = replace_substring(haystack, needle, needle_replacement);
   fail_unless(strcmp(result, "MCCCCI"));
+  free(result);
+
+#test gracefully_returns_same_value_if_no_replaced_string
+  char *haystack = "L";
+  char *needle = "IV";
+  char *needle_replacement="IIII";
+  char *result;
+  result = replace_substring(haystack, needle, needle_replacement);
+  fail_unless(strcmp(result, "L") == 0);
+  free(result);
+
+
+#test can_expand_roman_iv
+  char *haystack = "IV";
+  char *result;
+  char *intermediate = strdup(haystack);
+  int i;
+  for(i = 0; i< TRANSLATION_SIZE; ++i) {
+    result = replace_substring(intermediate, proper_translation[i], simple_translation[i]);
+    free(intermediate);
+    intermediate = result;
+  }
+  fail_unless(strcmp(result, "IIII") == 0);
   free(result);
