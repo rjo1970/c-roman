@@ -93,3 +93,10 @@
   char *result = integer_to_roman(1984);
   fail_unless(strcmp(result, "MCMLXXXIV") == 0);
   free(result);
+
+#test can_add_romans
+  char *a = "MCMLXX";
+  char *b = "XIV";
+  char* result = roman_add(a, b);
+  fail_unless(strcmp(result, "MCMLXXXIV") == 0);
+  free(result);

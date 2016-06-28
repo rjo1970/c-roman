@@ -80,8 +80,8 @@ char *compress_roman(char* expanded) {
 
 char *integer_to_roman(int number) {
   char *buffer = calloc(1, 30);
-  char *next = buffer;
   assert(buffer != NULL);
+  char *next = buffer;
 
   int remaining = number;
   int i = 0;
@@ -96,4 +96,8 @@ char *integer_to_roman(int number) {
   char *result = compress_roman(buffer);
   free(buffer);
   return result;
+}
+
+char *roman_add(char *a, char *b) {
+  return integer_to_roman(roman_to_integer(a) + roman_to_integer(b));
 }
