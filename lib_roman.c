@@ -1,6 +1,8 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
 #include <ctype.h>
+#include <string.h>
 #include "lib_roman.h"
 
 char *uppercased_roman(char *lowercased) {
@@ -15,7 +17,7 @@ char *uppercased_roman(char *lowercased) {
     return upper;
 }
 
-char *replace_substring(char *haystack, char *needle, char *needle_replacement) {
+char *replace_substring(char *haystack, const char *needle, const char *needle_replacement) {
   char *result;
   char *p = strstr(haystack, needle);
   if (p == NULL) {
@@ -51,7 +53,6 @@ char *simplify_roman(char *roman) {
 
 int roman_to_integer(char *roman) {
   int i=0;
-  int j=0;
   int value=0;
   char *simplified = simplify_roman(roman);
   char *p = simplified;

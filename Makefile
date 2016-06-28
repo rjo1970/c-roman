@@ -2,8 +2,10 @@ CFLAGS=-Wall -g
 
 all: clean roman_math
 
+roman_math: lib_roman.o
+
 clean:
-	rm -rf roman_math roman_math.dSYM \
+	rm -rf roman_math roman_math.dSYM  *.o \
 	  test/*test test/*.c
 
 test: roman_math roman_strings_test
