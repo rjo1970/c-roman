@@ -22,18 +22,22 @@ char *replace_substring(char *haystack, char *needle, char *needle_replacement) 
     result = strdup(haystack);
     return result;
   }
+  char *pend = p + strlen(needle);
+
   char *buffer = calloc(1, strlen(haystack) + strlen(needle_replacement) + 1);
   assert(buffer != NULL);
+
   strcpy(buffer, haystack);
-  int ndx = p - haystack;
-  strcpy(buffer + (ndx * sizeof(char)), needle_replacement);
+  char* start = buffer + ((p - haystack) * sizeof(char));
+  sprintf(start, "%s%s", needle_replacement, pend);
+
   result = strdup(buffer);
   assert(result != NULL);
   free(buffer);
   return result;
 }
 
-char *simplify_roman(char * roman) {
+char *simplify_roman(char *roman) {
   int i;
   char *result;
   char *intermediate = strdup(roman);
@@ -43,4 +47,21 @@ char *simplify_roman(char * roman) {
     intermediate = result;
   }
   return result;
+}
+
+int roman_to_integer(char *roman) {
+  int i=0;
+  int j=0;
+  int value=0;
+  char *simplified = simplify_roman(roman);
+  char *p = simplified;
+  do {
+    while( p[0] == romans[i]) {
+      value += roman_values[i];
+      ++p;
+    }
+    ++i;
+  } while(*p);
+  free(simplified);
+  return value;
 }

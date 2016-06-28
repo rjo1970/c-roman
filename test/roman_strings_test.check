@@ -23,7 +23,7 @@
   char *needle_replacement = "CCCC";
   char *result;
   result = replace_substring(haystack, needle, needle_replacement);
-  fail_unless(strcmp(result, "CCCCI"));
+  fail_unless(strcmp(result, "CCCCI") == 0);
   free(result);
 
 #test can_replace_substring_starting_in_middle
@@ -32,7 +32,7 @@
   char *needle_replacement = "CCCC";
   char *result;
   result = replace_substring(haystack, needle, needle_replacement);
-  fail_unless(strcmp(result, "MCCCCI"));
+  fail_unless(strcmp(result, "MCCCCI") == 0);
   free(result);
 
 #test gracefully_returns_same_value_if_no_replaced_string
@@ -72,5 +72,14 @@
 
 #test can_expand_mcmxciv
   char *result = simplify_roman("MCMXCIV");
-  fail_unless(strcmp(result, "MDCCCCLXXXXIIII"));
+  fail_unless(strcmp(result, "MDCCCCLXXXXIIII") == 0);
   free(result);
+
+#test can_expand_mcmlxxxiv
+  char *result = simplify_roman("MCMLXXXIV");
+  fail_unless(strcmp(result, "MDCCCCLXXXIIII") == 0);
+  free(result);
+
+#test can_convert_to_integer
+  int result = roman_to_integer("MCMLXXXIV");
+  fail_unless(result == 1984);
