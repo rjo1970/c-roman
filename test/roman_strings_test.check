@@ -111,3 +111,4 @@
   char *b = "XIV";
   char *result = roman_subtract(a, b);
   fail_unless(strcmp(result, "MCMLVI") == 0);
+  free(result);
