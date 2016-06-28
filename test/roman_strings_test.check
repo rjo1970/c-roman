@@ -46,14 +46,16 @@
 
 
 #test can_expand_roman_iv
-  char *haystack = "IV";
-  char *result;
-  char *intermediate = strdup(haystack);
-  int i;
-  for(i = 0; i< TRANSLATION_SIZE; ++i) {
-    result = replace_substring(intermediate, proper_translation[i], simple_translation[i]);
-    free(intermediate);
-    intermediate = result;
-  }
+  char *result = simplify_roman("IV");
   fail_unless(strcmp(result, "IIII") == 0);
+  free(result);
+
+#test can_expand_roman_xl
+  char *result = simplify_roman("XL");
+  fail_unless(strcmp(result, "XXXX") == 0);
+  free(result);
+
+#test can_expand_roman_xc
+  char *result = simplify_roman("XC");
+  fail_unless(strcmp(result, "LXXXX") == 0);
   free(result);

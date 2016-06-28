@@ -32,3 +32,15 @@ char *replace_substring(char *haystack, char *needle, char *needle_replacement) 
   free(buffer);
   return result;
 }
+
+char *simplify_roman(char * roman) {
+  int i;
+  char *result;
+  char *intermediate = strdup(roman);
+  for(i = 0; i< TRANSLATION_SIZE; ++i) {
+    result = replace_substring(intermediate, proper_translation[i], simple_translation[i]);
+    free(intermediate);
+    intermediate = result;
+  }
+  return result;
+}
