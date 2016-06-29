@@ -5,6 +5,14 @@
 #include <string.h>
 #include "lib_roman.h"
 
+static const char *proper_translation[TRANSLATION_SIZE] =
+ { "IV", "IX", "XL", "XC", "CD", "CM" };
+static const char *simple_translation[TRANSLATION_SIZE] =
+ {"IIII", "VIIII", "XXXX", "LXXXX", "CCCC", "DCCCC"};
+
+static const char romans[ROMAN_SIZE] = { 'M', 'D', 'C', 'L', 'X', 'V', 'I'};
+static const int roman_values[ROMAN_SIZE] = { 1000, 500, 100, 50, 10, 5, 1};
+
 char *uppercased_roman(char *lowercased) {
     char *upper = calloc(1, strlen(lowercased) + 1);
     assert(upper != NULL);

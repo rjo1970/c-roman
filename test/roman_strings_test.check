@@ -10,8 +10,8 @@
 
 #test can_replace_substring_starting_at_end
   char *haystack = "MIV";
-  char *needle = proper_translation[0];
-  char *needle_replacement = simple_translation[0];
+  char *needle = (char *) proper_translation[0];
+  char *needle_replacement = (char *) simple_translation[0];
   char *result;
   result = replace_substring(haystack, needle, needle_replacement);
   fail_unless(strcmp(result, "MIIII") == 0);
