@@ -79,7 +79,7 @@ int roman_to_integer(char *roman)
 		}
 		++i;
 	}
-	while (*p);
+	while (*p && i < ROMAN_SIZE);
 	free(simplified);
 	return value;
 }
@@ -101,7 +101,7 @@ char *compress_roman(char *expanded)
 
 char *integer_to_roman(int number)
 {
-	assert(number < 4000 && number > 0);
+	assert(number < 4000 && number > -1);
 	char *buffer = calloc(1, 30);
 	assert(buffer != NULL);
 	char *next = buffer;

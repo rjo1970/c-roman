@@ -44,7 +44,6 @@
   fail_unless(strcmp(result, "L") == 0);
   free(result);
 
-
 #test can_expand_roman_iv
   char *result = simplify_roman("IV");
   fail_unless(strcmp(result, "IIII") == 0);
@@ -111,4 +110,11 @@
   char *b = "XIV";
   char *result = roman_subtract(a, b);
   fail_unless(strcmp(result, "MCMLVI") == 0);
+  free(result);
+
+#test can_handle_abusive_input
+  char *a = "V";
+  char *b = "garbage";
+  char *result = roman_add(a, b);
+  fail_unless(strcmp(result, "V") == 0);
   free(result);
