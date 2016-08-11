@@ -123,3 +123,13 @@
   char *bad = "IIII";
   int result = valid_roman(bad);
   fail_unless(result == 0);
+
+#test can_validate_v_as_valid
+  char *good = "V";
+  int result = valid_roman(good);
+  fail_unless(result != 0);
+
+#test can_validate_im_as_invalid
+  char *bad = "IM";
+  int result = valid_roman(bad);
+  fail_unless(result == 0);
