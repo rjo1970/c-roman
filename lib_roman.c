@@ -26,7 +26,7 @@ char *uppercased_roman(char *lowercased)
 	return upper;
 }
 
-char *replace_substring(char *haystack, const char *needle,
+static char *replace_substring(char *haystack, const char *needle,
 			const char *needle_replacement)
 {
 	char *result;
@@ -51,7 +51,7 @@ char *replace_substring(char *haystack, const char *needle,
 	return result;
 }
 
-char *simplify_roman(char *roman)
+static char *simplify_roman(char *roman)
 {
 	int i;
 	char *result;
@@ -84,7 +84,7 @@ int roman_to_integer(char *roman)
 	return value;
 }
 
-char *compress_roman(char *expanded)
+static char *compress_roman(char *expanded)
 {
 	int i;
 	char *result;
@@ -101,8 +101,8 @@ char *compress_roman(char *expanded)
 
 char *integer_to_roman(int number)
 {
-	assert(number < 4000 && number > -1);
-	char *buffer = calloc(1, 30);
+	assert(number < MAX_ROMAN_VALUE && number > -1);
+	char *buffer = calloc(1, MAX_ROMAN_LENGTH);
 	assert(buffer != NULL);
 	char *next = buffer;
 

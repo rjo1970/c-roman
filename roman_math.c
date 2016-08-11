@@ -6,7 +6,7 @@
 int main(int argc, char **argv)
 {
 	char *result;
-	if (argc != 4) {
+	if (argc != 4 || (!valid_roman(argv[1])) || (!valid_roman(argv[3]))) {
 		printf("usage: roman_math <roman> [+/-] <roman>\n");
 		exit(1);
 	}
