@@ -133,3 +133,8 @@
   char *bad = "IM";
   int result = valid_roman(bad);
   fail_unless(result == 0);
+
+#test can_validate_empty_as_invalid
+    char *bad = "";
+    int result = valid_roman(bad);
+    fail_unless(result == 0);

@@ -133,6 +133,9 @@ char *roman_subtract(char *a, char *b)
 
 int valid_roman(char *candidate) {
   int value = roman_to_integer(candidate);
+  if (value == 0) {
+    return 0;
+  }
   char *converted = integer_to_roman(value);
   int result = strcmp(candidate, converted);
   free(converted);
