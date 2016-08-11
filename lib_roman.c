@@ -130,3 +130,7 @@ char *roman_subtract(char *a, char *b)
 {
 	return integer_to_roman(roman_to_integer(a) - roman_to_integer(b));
 }
+
+int valid_roman(char *candidate) {
+  return 0;
+}

@@ -118,3 +118,8 @@
   char *result = roman_add(a, b);
   fail_unless(strcmp(result, "V") == 0);
   free(result);
+
+#test can_validate_iiii_as_invalid
+  char *bad = "IIII";
+  int result = valid_roman(bad);
+  fail_unless(result == 0);
