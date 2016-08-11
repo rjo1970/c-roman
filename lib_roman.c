@@ -132,12 +132,15 @@ char *roman_subtract(char *a, char *b)
 }
 
 int valid_roman(char *candidate) {
-  int value = roman_to_integer(candidate);
+  char *capitalized = uppercased_roman(candidate);
+  int value = roman_to_integer(capitalized);
   if (value == 0) {
+    free(capitalized);
     return 0;
   }
   char *converted = integer_to_roman(value);
-  int result = strcmp(candidate, converted);
+  int result = strcmp(capitalized, converted);
   free(converted);
+  free(capitalized);
   return result == 0;
 }

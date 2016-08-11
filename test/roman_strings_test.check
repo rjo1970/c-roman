@@ -143,3 +143,8 @@
   char *bad = "GARBAGE";
   int result = valid_roman(bad);
   fail_unless(result == 0);
+
+#test can_validate_lowercased_valid_romans
+  char *good = "v";
+  int result = valid_roman(good);
+  fail_unless(result != 0);
